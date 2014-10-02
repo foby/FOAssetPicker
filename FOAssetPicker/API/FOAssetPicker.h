@@ -27,6 +27,12 @@ extern NSUInteger const FOAssetPickerDefaultMaxSelectionCount;
 @end
 
 
+@protocol FOAssetPickerCellRenderer <NSObject>
+
+- (void) renderCell: (UITableViewCell*) cell;
+
+@end
+
 /**
  * View for multi-selectable access to the iOS Asset Library.
  */
@@ -37,13 +43,11 @@ extern NSUInteger const FOAssetPickerDefaultMaxSelectionCount;
  */
 @property (nonatomic, strong) ALAssetsLibrary* library;
 /*
- * The picker delegate for notification.
- */
-@property (nonatomic, weak) id<FOAssetPickerDelegate> pickerDelegate;
-/*
  * The maximum number of selectable assets.
  */
 @property (nonatomic, assign) NSUInteger maxSelectionCount;
+@property (nonatomic, weak) id<FOAssetPickerDelegate> pickerDelegate;
+@property (nonatomic, weak) id<FOAssetPickerCellRenderer> cellRenderer;
 
 /*
  * Convenience method presenting the asset picker modally wrapped in navigation view controller and returns it for configuration purposes.

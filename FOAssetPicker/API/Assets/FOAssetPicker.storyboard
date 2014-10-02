@@ -26,10 +26,6 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="4" minY="4" maxX="4" maxY="4"/>
                                 </collectionViewFlowLayout>
-                                <activityIndicatorView key="backgroundView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="gray" id="KIq-WM-xYF">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                </activityIndicatorView>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="Cell" id="hbj-6A-IiJ" customClass="FOAssetCell">
                                         <rect key="frame" x="4" y="4" width="75" height="75"/>
@@ -102,8 +98,18 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="KIq-WM-xYF">
+                                <rect key="frame" x="0.0" y="-46" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KIq-WM-xYF" firstAttribute="leading" secondItem="eT9-gI-j7R" secondAttribute="leading" id="8pm-vw-b1k"/>
+                            <constraint firstAttribute="trailing" secondItem="KIq-WM-xYF" secondAttribute="trailing" id="PxJ-d1-w97"/>
+                            <constraint firstItem="KIq-WM-xYF" firstAttribute="top" secondItem="dLl-O5-7vc" secondAttribute="bottom" constant="-66" id="t9X-rv-euC"/>
+                            <constraint firstItem="Y1g-Cb-lCr" firstAttribute="top" secondItem="KIq-WM-xYF" secondAttribute="bottom" constant="46" id="wJK-dU-B21"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qzK-OV-KDV"/>
                     <connections>
