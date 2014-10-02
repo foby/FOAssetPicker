@@ -3,3 +3,4 @@
 "FOAssetPicker.numAssetsSelectedSingle" = "%d Objekt gewählt";
 "FOAssetPicker.numAssetsSelectedMultiple" = "%d Objekte gewählt";
 "FOAssetPicker.loading" = "Wird geladen...";
+"FOAssetPicker.cancel" = "Abbrechen";

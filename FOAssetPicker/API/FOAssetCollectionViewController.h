@@ -15,7 +15,6 @@ typedef void (^ FOAssetSelectionDoneHandler)(NSArray* assetProxies);
 
 @interface FOAssetCollectionViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UICollectionView* collectionView;
 @property (strong, nonatomic) ALAssetsGroup* assetsGroup;
 @property (assign, nonatomic) NSUInteger maxSelectionCount;
 @property (copy, nonatomic) FOAssetSelectionDoneHandler selectionDoneHandler;

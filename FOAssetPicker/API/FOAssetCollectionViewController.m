@@ -20,6 +20,7 @@ static NSString* const SNAssetsCellIdentifier = @"Cell";
 @property (nonatomic) BOOL isPlayerPlaying;
 @property (strong, nonatomic) MPMoviePlayerViewController* playerVC;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView* activityIndicator;
+@property (weak, nonatomic) IBOutlet UICollectionView* collectionView;
 @end
 
 @implementation FOAssetCollectionViewController
@@ -115,6 +116,9 @@ static NSString* const SNAssetsCellIdentifier = @"Cell";
     FOAssetProxy* assetProxy = [self.assetProxies objectAtIndex: indexPath.row];
 
     if (assetProxy) {
+        if (!assetProxy.selected && [self selectionCount] >= self.maxSelectionCount) {
+            return;
+        }
         cell.checked = !assetProxy.selected;
         [self updateTitle];
     }
