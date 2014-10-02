@@ -107,6 +107,11 @@ NSUInteger const FOAssetPickerDefaultMaxSelectionCount = 30;
     cell.textLabel.text = [NSString stringWithFormat: @"%@ (%d)", [group valueForProperty: ALAssetsGroupPropertyName], groupCount];
     [cell.imageView setImage: [UIImage imageWithCGImage: [(ALAssetsGroup*)[self.assetGroups objectAtIndex: indexPath.row] posterImage]]];
     [cell setAccessoryType: UITableViewCellAccessoryDisclosureIndicator];
+
+    if (self.cellRenderer) {
+        [self.cellRenderer renderCell: cell];
+    }
+
     return cell;
 }
 
