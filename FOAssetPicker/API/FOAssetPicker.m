@@ -72,7 +72,7 @@ NSUInteger const FOAssetPickerDefaultMaxSelectionCount = 30;
 }
 
 - (void) viewDidAppear: (BOOL) animated {
-    self.navigationItem.title = NSLocalizedString(@"SNImagePicker.albums", nil);
+    self.navigationItem.title = NSLocalizedString(@"FOAssetPicker.albums", nil);
 }
 
 - (void) reloadTableView {

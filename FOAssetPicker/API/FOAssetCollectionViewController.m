@@ -181,10 +181,10 @@ static NSString* const SNAssetsCellIdentifier = @"Cell";
 - (void) updateTitle {
     NSUInteger selectionCount = [self selectionCount];
 
-    NSString* titlePattern = NSLocalizedString(@"SNImagePicker.numAssetsSelectedMultiple", nil);
+    NSString* titlePattern = NSLocalizedString(@"FOAssetPicker.numAssetsSelectedMultiple", nil);
 
     if (selectionCount == 1) {
-        titlePattern = NSLocalizedString(@"SNImagePicker.numAssetsSelectedSingle", nil);
+        titlePattern = NSLocalizedString(@"FOAssetPicker.numAssetsSelectedSingle", nil);
     }
     self.navigationItem.title = [NSString stringWithFormat: titlePattern, selectionCount];
 }

@@ -1,5 +1,5 @@
 
-"SNImagePicker.albums" = "Albums";
-"SNImagePicker.numAssetsSelectedSingle" = "%d item selected";
-"SNImagePicker.numAssetsSelectedMultiple" = "%d items selected";
-"SNImagePicker.loading" = "Loading...";
+"FOAssetPicker.albums" = "Albums";
+"FOAssetPicker.numAssetsSelectedSingle" = "%d item selected";
+"FOAssetPicker.numAssetsSelectedMultiple" = "%d items selected";
+"FOAssetPicker.loading" = "Loading...";
