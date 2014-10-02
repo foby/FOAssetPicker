@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="pKR-Xo-NCJ">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="86i-W0-PWm">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="pKR-Xo-NCJ" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xaI-zm-tBb">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="fR7-0P-1FR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EXK-rI-eqj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-359" y="170"/>
+        </scene>
+        <!--Demo View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="FODemoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UN2-xG-gKL">
+                                <rect key="frame" x="68" y="192" width="185" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="185" id="Jya-OC-N9O"/>
+                                    <constraint firstAttribute="height" constant="30" id="NUP-cX-2vs"/>
+                                </constraints>
+                                <state key="normal" title="Open Asset Picker modally">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="presentAssetPickerModally:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="N7d-sm-XSD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="usC-bN-wAK">
+                                <rect key="frame" x="96" y="154" width="128" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="grp-I9-aHU"/>
+                                    <constraint firstAttribute="width" constant="128" id="v4U-gX-F6C"/>
+                                </constraints>
+                                <state key="normal" title="Open Asset Picker">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="presentAssetPicker:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="1Rw-cu-SXn"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P0R-63-K0W">
+                                <rect key="frame" x="29" y="340" width="263" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="NGU-sX-auR"/>
+                                    <constraint firstAttribute="width" constant="263" id="c1s-uP-AZJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="usC-bN-wAK" secondAttribute="centerX" id="CU2-ru-rAk"/>
+                            <constraint firstItem="usC-bN-wAK" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="90" id="M8G-UM-39w"/>
+                            <constraint firstItem="UN2-xG-gKL" firstAttribute="top" secondItem="usC-bN-wAK" secondAttribute="bottom" constant="8" id="hdQ-e0-Hh2"/>
+                            <constraint firstItem="P0R-63-K0W" firstAttribute="top" secondItem="UN2-xG-gKL" secondAttribute="bottom" constant="118" id="ne6-pB-kdH"/>
+                            <constraint firstAttribute="centerX" secondItem="P0R-63-K0W" secondAttribute="centerX" constant="-0.5" id="xYy-0P-9G9"/>
+                            <constraint firstAttribute="centerX" secondItem="UN2-xG-gKL" secondAttribute="centerX" constant="-0.5" id="zxc-mW-kqw"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="M84-DJ-UoI"/>
+                    <connections>
+                        <outlet property="resultLabel" destination="P0R-63-K0W" id="wDn-Js-k8R"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
