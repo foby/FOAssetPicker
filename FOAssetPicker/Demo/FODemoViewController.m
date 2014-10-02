@@ -29,6 +29,7 @@
 - (IBAction) presentAssetPickerModally: (id) sender {
     FOAssetPicker* assetPicker = [FOAssetPicker presentModallyWithParentViewController: self];
 
+    assetPicker.maxSelectionCount = 10;
     assetPicker.pickerDelegate = self;
     self.pickerPresentedModally = YES;
 }
@@ -36,6 +37,7 @@
 - (FOAssetPicker*) assetPicker {
     FOAssetPicker* assetPicker = [[FOAssetPicker alloc] init];
 
+    assetPicker.maxSelectionCount = 10;
     assetPicker.pickerDelegate = self;
     return assetPicker;
 }

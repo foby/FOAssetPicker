@@ -20,6 +20,7 @@ static NSString* const SNAssetsCellIdentifier = @"Cell";
 @property (nonatomic) BOOL isPlayerPlaying;
 @property (strong, nonatomic) MPMoviePlayerViewController* playerVC;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView* activityIndicator;
+@property (weak, nonatomic) IBOutlet UICollectionView* collectionView;
 @end
 
 @implementation FOAssetCollectionViewController
@@ -115,6 +116,9 @@ static NSString* const SNAssetsCellIdentifier = @"Cell";
     FOAssetProxy* assetProxy = [self.assetProxies objectAtIndex: indexPath.row];
 
     if (assetProxy) {
+        if (!assetProxy.selected && [self selectionCount] >= self.maxSelectionCount) {
+            return;
+        }
         cell.checked = !assetProxy.selected;
         [self updateTitle];
     }
@@ -181,10 +185,10 @@ static NSString* const SNAssetsCellIdentifier = @"Cell";
 - (void) updateTitle {
     NSUInteger selectionCount = [self selectionCount];
 
-    NSString* titlePattern = NSLocalizedString(@"SNImagePicker.numAssetsSelectedMultiple", nil);
+    NSString* titlePattern = NSLocalizedString(@"FOAssetPicker.numAssetsSelectedMultiple", nil);
 
     if (selectionCount == 1) {
-        titlePattern = NSLocalizedString(@"SNImagePicker.numAssetsSelectedSingle", nil);
+        titlePattern = NSLocalizedString(@"FOAssetPicker.numAssetsSelectedSingle", nil);
     }
     self.navigationItem.title = [NSString stringWithFormat: titlePattern, selectionCount];
 }

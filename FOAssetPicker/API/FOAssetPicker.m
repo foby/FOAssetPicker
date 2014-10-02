@@ -41,7 +41,7 @@ NSUInteger const FOAssetPickerDefaultMaxSelectionCount = 30;
 + (FOAssetPicker*) presentModallyWithParentViewController: (UIViewController*) parentViewController {
     FOAssetPicker* assetPicker = [[[self class] alloc] init];
 
-    assetPicker.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle: @"Close" style: UIBarButtonItemStylePlain target: assetPicker action: @selector(dismissImagePicker)];
+    assetPicker.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle: NSLocalizedString(@"FOAssetPicker.cancel", nil) style: UIBarButtonItemStylePlain target: assetPicker action: @selector(dismissImagePicker)];
     UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController: assetPicker];
 
     [parentViewController presentViewController: navigationController animated: YES completion: NULL];
@@ -72,7 +72,7 @@ NSUInteger const FOAssetPickerDefaultMaxSelectionCount = 30;
 }
 
 - (void) viewDidAppear: (BOOL) animated {
-    self.navigationItem.title = NSLocalizedString(@"SNImagePicker.albums", nil);
+    self.navigationItem.title = NSLocalizedString(@"FOAssetPicker.albums", nil);
 }
 
 - (void) reloadTableView {
