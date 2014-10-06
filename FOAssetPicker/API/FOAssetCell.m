@@ -47,7 +47,6 @@
     else {
         self.overlayView.alpha = 0;
     }
-    self.assetProxy.selected = checked;
 }
 
 - (BOOL) isChecked {
