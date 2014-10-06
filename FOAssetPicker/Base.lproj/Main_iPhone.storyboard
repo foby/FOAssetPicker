@@ -32,7 +32,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UN2-xG-gKL">
-                                <rect key="frame" x="68" y="192" width="185" height="30"/>
+                                <rect key="frame" x="68" y="221" width="185" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="185" id="Jya-OC-N9O"/>
@@ -46,7 +46,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="usC-bN-wAK">
-                                <rect key="frame" x="96" y="154" width="128" height="30"/>
+                                <rect key="frame" x="96" y="183" width="128" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="grp-I9-aHU"/>
@@ -70,19 +70,90 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zNY-nA-Dcu">
+                                <rect key="frame" x="139" y="116" width="49" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="49" id="4VT-bB-jaD"/>
+                                    <constraint firstAttribute="height" constant="30" id="Kia-lo-wo9"/>
+                                </constraints>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Photos">
+                                            <attributes>
+                                                <font key="NSFont" size="15" name="HelveticaNeue"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="photosTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="dRc-ZC-iKq"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Asset Type:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KyS-2J-1LU">
+                                <rect key="frame" x="42" y="120" width="89" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="blS-I0-su3"/>
+                                    <constraint firstAttribute="width" constant="89" id="p5V-UM-y0K"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3l0-Bu-Yf8">
+                                <rect key="frame" x="213" y="116" width="47" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="47" id="9XZ-hp-i2p"/>
+                                    <constraint firstAttribute="height" constant="30" id="cUP-jZ-hhO"/>
+                                </constraints>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Videos">
+                                            <attributes>
+                                                <font key="NSFont" size="15" name="HelveticaNeue"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="videosTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="nAG-4L-gn8"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iue-52-Mtr">
+                                <rect key="frame" x="198" y="120" width="6" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="6" id="LRW-oA-iKI"/>
+                                    <constraint firstAttribute="height" constant="21" id="fsR-k2-y21"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="usC-bN-wAK" firstAttribute="top" secondItem="zNY-nA-Dcu" secondAttribute="bottom" constant="37" id="2kw-3a-rcx"/>
                             <constraint firstAttribute="centerX" secondItem="usC-bN-wAK" secondAttribute="centerX" id="CU2-ru-rAk"/>
-                            <constraint firstItem="usC-bN-wAK" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="90" id="M8G-UM-39w"/>
+                            <constraint firstItem="3l0-Bu-Yf8" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="52" id="MCJ-qs-D6U"/>
+                            <constraint firstItem="Iue-52-Mtr" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="56" id="QyZ-Bv-Vom"/>
+                            <constraint firstItem="KyS-2J-1LU" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="56" id="XFu-So-Q8h"/>
                             <constraint firstItem="UN2-xG-gKL" firstAttribute="top" secondItem="usC-bN-wAK" secondAttribute="bottom" constant="8" id="hdQ-e0-Hh2"/>
-                            <constraint firstItem="P0R-63-K0W" firstAttribute="top" secondItem="UN2-xG-gKL" secondAttribute="bottom" constant="118" id="ne6-pB-kdH"/>
+                            <constraint firstItem="P0R-63-K0W" firstAttribute="top" secondItem="UN2-xG-gKL" secondAttribute="bottom" constant="89" id="ne6-pB-kdH"/>
+                            <constraint firstItem="usC-bN-wAK" firstAttribute="top" secondItem="KyS-2J-1LU" secondAttribute="bottom" constant="42" id="pQX-hz-Tck"/>
+                            <constraint firstItem="3l0-Bu-Yf8" firstAttribute="leading" secondItem="Iue-52-Mtr" secondAttribute="trailing" constant="9" id="sg6-97-9ou"/>
+                            <constraint firstItem="zNY-nA-Dcu" firstAttribute="leading" secondItem="KyS-2J-1LU" secondAttribute="trailing" constant="8" id="urM-0N-70p"/>
+                            <constraint firstItem="KyS-2J-1LU" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="42" id="vPt-zA-alZ"/>
+                            <constraint firstItem="Iue-52-Mtr" firstAttribute="leading" secondItem="zNY-nA-Dcu" secondAttribute="trailing" constant="10" id="wjS-hp-BPh"/>
                             <constraint firstAttribute="centerX" secondItem="P0R-63-K0W" secondAttribute="centerX" constant="-0.5" id="xYy-0P-9G9"/>
                             <constraint firstAttribute="centerX" secondItem="UN2-xG-gKL" secondAttribute="centerX" constant="-0.5" id="zxc-mW-kqw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="M84-DJ-UoI"/>
                     <connections>
+                        <outlet property="buttonAssetTypePhotos" destination="zNY-nA-Dcu" id="Qrj-RA-coj"/>
+                        <outlet property="buttonAssetTypeVideos" destination="3l0-Bu-Yf8" id="G4i-rY-kPm"/>
                         <outlet property="resultLabel" destination="P0R-63-K0W" id="wDn-Js-k8R"/>
                     </connections>
                 </viewController>

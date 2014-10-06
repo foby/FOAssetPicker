@@ -18,6 +18,7 @@ typedef NS_ENUM (NSUInteger, SNAssetType) {
 @class ALAsset;
 @interface FOAssetProxy : NSObject
 
+@property (weak, nonatomic) NSCache* previewCache;
 @property (assign, nonatomic) BOOL selected;
 
 - (instancetype) initWithAsset: (ALAsset*) asset;

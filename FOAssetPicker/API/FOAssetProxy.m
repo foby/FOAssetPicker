@@ -11,7 +11,6 @@
 
 @interface FOAssetProxy ()
 @property (nonatomic, strong) ALAsset* asset;
-@property (nonatomic, strong) UIImage* preview;
 @property (nonatomic, strong) NSNumber* duration;
 @property (nonatomic, strong) NSString* durationFormatted;
 @end
@@ -27,10 +26,20 @@
 }
 
 - (UIImage*) preview {
-    if (!_preview) {
-        _preview = [UIImage imageWithCGImage: [self.asset aspectRatioThumbnail]];
+    UIImage* image = nil;
+
+    if (self.previewCache) {
+        NSURL* assetUrl = [self assetURL];
+        image = [self.previewCache objectForKey: assetUrl];
+        if (!image) {
+            image = [UIImage imageWithCGImage: [self.asset aspectRatioThumbnail]];
+            [self.previewCache setObject: image forKey: assetUrl];
+        }
     }
-    return _preview;
+    if (!image) {
+        image = [UIImage imageWithCGImage: [self.asset aspectRatioThumbnail]];
+    }
+    return image;
 }
 
 - (SNAssetType) assetType {

@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel* duration;
 @property (weak, nonatomic) IBOutlet UIImageView* check;
 @property (weak, nonatomic) IBOutlet UIView* overlayView;
+@property (weak, nonatomic) IBOutlet UIView* videoInfoOverlay;
 @end
 
 @implementation FOAssetCell
@@ -29,11 +30,11 @@
     self.checked = assetProxy.selected;
 
     if ([assetProxy assetType] == SNAssetTypeVideo) {
-        self.duration.hidden = NO;
+        self.videoInfoOverlay.hidden = NO;
         self.duration.text = [assetProxy videoDurationFormatted];
     }
     else {
-        self.duration.hidden = YES;
+        self.videoInfoOverlay.hidden = YES;
     }
     _assetProxy = assetProxy;
 }

@@ -12,10 +12,16 @@
 @interface FODemoViewController () <FOAssetPickerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel* resultLabel;
 @property (assign, nonatomic) BOOL pickerPresentedModally;
-
+@property (weak, nonatomic) IBOutlet UIButton* buttonAssetTypePhotos;
+@property (weak, nonatomic) IBOutlet UIButton* buttonAssetTypeVideos;
+@property (assign, nonatomic) enum FOAssetPickerType pickerType;
 @end
 
 @implementation FODemoViewController
+
+- (void) viewDidLoad {
+    [self photosTapped: nil];
+}
 
 - (void) viewDidAppear: (BOOL) animated {
     self.navigationItem.title = @"FOAssetPicker";
@@ -27,15 +33,34 @@
 }
 
 - (IBAction) presentAssetPickerModally: (id) sender {
-    FOAssetPicker* assetPicker = [FOAssetPicker presentModallyWithParentViewController: self];
+    FOAssetPicker* assetPicker = [FOAssetPicker presentModallyWithPickerType: self.pickerType andParentViewController: self];
 
     assetPicker.maxSelectionCount = 10;
     assetPicker.pickerDelegate = self;
     self.pickerPresentedModally = YES;
 }
 
+- (IBAction) photosTapped: (id) sender {
+    self.pickerType = FOAssetPickerTypePhotos;
+    self.buttonAssetTypePhotos.titleLabel.attributedText = [[NSAttributedString alloc] initWithString: @"Photos"];
+    self.buttonAssetTypeVideos.titleLabel.attributedText = [self strikedThroughString: @"Videos"];
+}
+
+- (IBAction) videosTapped: (id) sender {
+    self.pickerType = FOAssetPickerTypeVideos;
+    self.buttonAssetTypeVideos.titleLabel.attributedText = [[NSAttributedString alloc] initWithString: @"Videos"];
+    self.buttonAssetTypePhotos.titleLabel.attributedText = [self strikedThroughString: @"Photos"];
+}
+
+- (NSAttributedString*) strikedThroughString: (NSString*) s {
+    NSMutableAttributedString* attString = [[NSMutableAttributedString alloc] initWithString: s];
+
+    [attString addAttribute: NSStrikethroughStyleAttributeName value: [NSNumber numberWithInt: NSUnderlineStyleThick] range: NSMakeRange(0, [s length])];
+    return attString;
+}
+
 - (FOAssetPicker*) assetPicker {
-    FOAssetPicker* assetPicker = [[FOAssetPicker alloc] init];
+    FOAssetPicker* assetPicker = [[FOAssetPicker alloc] initWithPickerType: self.pickerType];
 
     assetPicker.maxSelectionCount = 10;
     assetPicker.pickerDelegate = self;

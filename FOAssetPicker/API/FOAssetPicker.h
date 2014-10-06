@@ -11,6 +11,12 @@
 // Default maximum selection count (30)
 extern NSUInteger const FOAssetPickerDefaultMaxSelectionCount;
 
+// The type of assets to show
+extern NS_ENUM(NSUInteger, FOAssetPickerType) {
+    FOAssetPickerTypePhotos,
+    FOAssetPickerTypeVideos
+};
+
 @class ALAssetsLibrary;
 @class FOAssetPicker;
 
@@ -36,7 +42,7 @@ extern NSUInteger const FOAssetPickerDefaultMaxSelectionCount;
 /**
  * View for multi-selectable access to the iOS Asset Library.
  */
-@interface FOAssetPicker : UITableViewController <UITableViewDataSource, UITableViewDelegate >
+@interface FOAssetPicker : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
 /*
  * The library to use for accessing assets.
@@ -46,12 +52,18 @@ extern NSUInteger const FOAssetPickerDefaultMaxSelectionCount;
  * The maximum number of selectable assets.
  */
 @property (nonatomic, assign) NSUInteger maxSelectionCount;
+@property (nonatomic, assign, readonly) enum FOAssetPickerType pickerType;
 @property (nonatomic, weak) id<FOAssetPickerDelegate> pickerDelegate;
 @property (nonatomic, weak) id<FOAssetPickerCellRenderer> cellRenderer;
 
 /*
+ * Creates a new instance of the asset picker for the given picker type.
+ */
+- (instancetype) initWithPickerType: (enum FOAssetPickerType) type;
+
+/*
  * Convenience method presenting the asset picker modally wrapped in navigation view controller and returns it for configuration purposes.
  */
-+ (FOAssetPicker*) presentModallyWithParentViewController: (UIViewController*) parentViewController;
++ (FOAssetPicker*) presentModallyWithPickerType: (enum FOAssetPickerType) type andParentViewController: (UIViewController*) parentViewController;
 
 @end

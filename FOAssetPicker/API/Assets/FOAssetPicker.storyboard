@@ -42,20 +42,45 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                         </imageView>
-                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y7k-g3-wgU">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jbf-iy-Ruv" userLabel="View - Video Info Overlay">
                                                             <rect key="frame" x="0.0" y="55" width="75" height="20"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                                            <color key="backgroundColor" red="0.039215687659999998" green="0.09803922474" blue="0.070588238540000001" alpha="0.78000000000000003" colorSpace="deviceRGB"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <subviews>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fo_video.png" translatesAutoresizingMaskIntoConstraints="NO" id="ES6-gq-WVy">
+                                                                    <rect key="frame" x="4" y="4" width="14" height="14"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="14" id="7Ff-cc-42v"/>
+                                                                        <constraint firstAttribute="height" constant="14" id="Mpl-9K-pE8"/>
+                                                                    </constraints>
+                                                                </imageView>
+                                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y7k-g3-wgU" userLabel="Label - Duration">
+                                                                    <rect key="frame" x="28" y="3" width="45" height="15"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="45" id="qSS-yM-jI6"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                    <size key="shadowOffset" width="0.0" height="0.0"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.70000000000000007" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="bottom" secondItem="ES6-gq-WVy" secondAttribute="bottom" constant="2" id="LyW-aA-jWC"/>
+                                                                <constraint firstItem="ES6-gq-WVy" firstAttribute="leading" secondItem="Jbf-iy-Ruv" secondAttribute="leading" constant="4" id="Seg-lU-eHf"/>
+                                                                <constraint firstAttribute="height" constant="20" id="bvJ-SB-ssZ"/>
+                                                                <constraint firstAttribute="trailing" secondItem="Y7k-g3-wgU" secondAttribute="trailing" constant="2" id="jbT-3a-ju5"/>
+                                                                <constraint firstAttribute="bottom" secondItem="Y7k-g3-wgU" secondAttribute="bottom" constant="2" id="oat-7D-K3c"/>
+                                                            </constraints>
+                                                        </view>
                                                         <view opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ct0-dj-iwf" userLabel="Overlay View">
                                                             <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                         </view>
-                                                        <imageView userInteractionEnabled="NO" contentMode="bottomRight" image="sn_check.png" translatesAutoresizingMaskIntoConstraints="NO" id="vZH-sI-SKA">
+                                                        <imageView userInteractionEnabled="NO" contentMode="bottomRight" image="fo_check.png" translatesAutoresizingMaskIntoConstraints="NO" id="vZH-sI-SKA">
                                                             <rect key="frame" x="42" y="43" width="32" height="32"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -67,7 +92,9 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="Jbf-iy-Ruv" secondAttribute="trailing" id="BBb-Rn-sFJ"/>
                                                         <constraint firstItem="Ct0-dj-iwf" firstAttribute="top" secondItem="7Jf-Dh-PX2" secondAttribute="top" id="H8Y-BU-O37"/>
+                                                        <constraint firstItem="Jbf-iy-Ruv" firstAttribute="leading" secondItem="7Jf-Dh-PX2" secondAttribute="leading" id="Lak-L2-LFF"/>
                                                         <constraint firstAttribute="trailing" secondItem="vZH-sI-SKA" secondAttribute="trailing" constant="1" id="PWr-bj-rap"/>
                                                         <constraint firstAttribute="bottom" secondItem="KcW-uc-XXJ" secondAttribute="bottom" id="XBn-F7-EGi"/>
                                                         <constraint firstItem="KcW-uc-XXJ" firstAttribute="top" secondItem="7Jf-Dh-PX2" secondAttribute="top" id="YGG-2q-lwd"/>
@@ -76,6 +103,7 @@
                                                         <constraint firstItem="KcW-uc-XXJ" firstAttribute="leading" secondItem="7Jf-Dh-PX2" secondAttribute="leading" id="p6G-Wn-jRq"/>
                                                         <constraint firstAttribute="bottom" secondItem="Ct0-dj-iwf" secondAttribute="bottom" id="rMl-lZ-v7W"/>
                                                         <constraint firstItem="Ct0-dj-iwf" firstAttribute="leading" secondItem="7Jf-Dh-PX2" secondAttribute="leading" id="yVW-lU-DKS"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Jbf-iy-Ruv" secondAttribute="bottom" id="ymm-nh-pBW"/>
                                                         <constraint firstAttribute="trailing" secondItem="Ct0-dj-iwf" secondAttribute="trailing" id="ywg-Me-VxZ"/>
                                                     </constraints>
                                                 </view>
@@ -94,6 +122,7 @@
                                             <outlet property="duration" destination="Y7k-g3-wgU" id="avR-2E-pvr"/>
                                             <outlet property="imageView" destination="KcW-uc-XXJ" id="Ecs-AW-wFu"/>
                                             <outlet property="overlayView" destination="Ct0-dj-iwf" id="byI-Mk-I0z"/>
+                                            <outlet property="videoInfoOverlay" destination="Jbf-iy-Ruv" id="fUm-wq-tqY"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -164,7 +193,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="sn_check.png" width="32" height="32"/>
+        <image name="fo_check.png" width="32" height="32"/>
+        <image name="fo_video.png" width="16" height="16"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
