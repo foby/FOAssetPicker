@@ -23,9 +23,18 @@ NSUInteger const FOAssetPickerDefaultMaxSelectionCount = 30;
 @property (nonatomic) int assetsGroupIndex;
 @property (nonatomic) int numberOfGroups;
 @property (nonatomic, strong) FOAssetsManager* assetsManager;
+@property (nonatomic, assign, readwrite) enum FOAssetPickerType pickerType;
 @end
 
 @implementation FOAssetPicker
+
+- (instancetype) initWithPickerType: (enum FOAssetPickerType) type {
+    self = [self init];
+    if (self) {
+        self.pickerType = type;
+    }
+    return self;
+}
 
 - (instancetype) init {
     UIStoryboard* storyboard = [UIStoryboard storyboardWithName: @"FOAssetPicker" bundle: nil];
@@ -34,12 +43,13 @@ NSUInteger const FOAssetPickerDefaultMaxSelectionCount = 30;
     if (self) {
         self.library = [[ALAssetsLibrary alloc] init];
         self.maxSelectionCount = FOAssetPickerDefaultMaxSelectionCount;
+        self.pickerType = FOAssetPickerTypePhotos;
     }
     return self;
 }
 
-+ (FOAssetPicker*) presentModallyWithParentViewController: (UIViewController*) parentViewController {
-    FOAssetPicker* assetPicker = [[[self class] alloc] init];
++ (FOAssetPicker*) presentModallyWithPickerType: (enum FOAssetPickerType) type andParentViewController: (UIViewController*) parentViewController {
+    FOAssetPicker* assetPicker = [[[self class] alloc] initWithPickerType: type];
 
     assetPicker.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle: NSLocalizedString(@"FOAssetPicker.cancel", nil) style: UIBarButtonItemStylePlain target: assetPicker action: @selector(dismissImagePicker)];
     UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController: assetPicker];
@@ -54,6 +64,11 @@ NSUInteger const FOAssetPickerDefaultMaxSelectionCount = 30;
 
 - (ALAssetsLibrary*) library {
     return self.assetsManager.library;
+}
+
+- (void) setPickerType: (enum FOAssetPickerType) pickerType {
+    self.assetsManager.pickerType = pickerType;
+    _pickerType = pickerType;
 }
 
 #pragma - mark View lifecycle

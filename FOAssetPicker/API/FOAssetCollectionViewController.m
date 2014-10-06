@@ -104,6 +104,7 @@ static NSString* const SNAssetsCellIdentifier = @"Cell";
     FOAssetProxy* proxy = [self.assetProxies objectAtIndex: indexPath.row];
 
     if (proxy) {
+        proxy.previewCache = self.assetsManager.previewCache;
         cell.assetProxy = proxy;
     }
     return cell;

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FOAssetPicker.h"
 
 @class ALAssetsGroup;
 @class ALAssetsLibrary;
@@ -14,6 +15,8 @@
 @interface FOAssetsManager : NSObject
 
 @property (nonatomic, strong, readonly) ALAssetsLibrary* library;
+@property (nonatomic, assign) enum FOAssetPickerType pickerType;
+@property (nonatomic, strong) NSCache* previewCache;
 
 - (instancetype) initWithAssetsLibrary: (ALAssetsLibrary*) assetsLibrary;
 
