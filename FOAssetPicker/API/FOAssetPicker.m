@@ -60,6 +60,7 @@ NSUInteger const FOAssetPickerDefaultMaxSelectionCount = 30;
 
 - (void) setLibrary: (ALAssetsLibrary*) library {
     self.assetsManager = [[FOAssetsManager alloc] initWithAssetsLibrary: library];
+    self.assetsManager.pickerType = self.pickerType;
 }
 
 - (ALAssetsLibrary*) library {

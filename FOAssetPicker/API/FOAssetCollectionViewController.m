@@ -120,7 +120,8 @@ static NSString* const SNAssetsCellIdentifier = @"Cell";
         if (!assetProxy.selected && [self selectionCount] >= self.maxSelectionCount) {
             return;
         }
-        cell.checked = !assetProxy.selected;
+        assetProxy.selected = !assetProxy.selected;
+        cell.checked = assetProxy.selected;
         [self updateTitle];
     }
 }
