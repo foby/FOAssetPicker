@@ -44,7 +44,8 @@ static NSString* const SNAssetsCellIdentifier = @"Cell";
     [super viewDidAppear: animated];
 
     UIBarButtonItem* doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemDone target: self action: @selector(doneTouched)];
-    [self.navigationItem setRightBarButtonItem: doneBtn];
+    self.navigationItem.rightBarButtonItem = doneBtn;
+    self.navigationItem.rightBarButtonItem.enabled = NO;
 
     [self.assetsManager loadAssetsForGroup: self.assetsGroup withCompletionHandler: ^(NSArray* assets) {
          NSMutableArray* tmp = [NSMutableArray array];
@@ -68,7 +69,6 @@ static NSString* const SNAssetsCellIdentifier = @"Cell";
         NSLog(@"Long press on collection view but not on a row");
     }
     else {
-        NSLog(@"long press on collection view at row %d", indexPath.row);
         FOAssetProxy* proxy = [self.assetProxies objectAtIndex: indexPath.row];
         [self playVideoAtURL: [proxy assetURL]];
     }
@@ -193,6 +193,7 @@ static NSString* const SNAssetsCellIdentifier = @"Cell";
         titlePattern = NSLocalizedString(@"FOAssetPicker.numAssetsSelectedSingle", nil);
     }
     self.navigationItem.title = [NSString stringWithFormat: titlePattern, selectionCount];
+    self.navigationItem.rightBarButtonItem.enabled = selectionCount > 0;
 }
 
 - (void) didReceiveMemoryWarning {
