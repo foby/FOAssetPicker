@@ -69,8 +69,8 @@
 
 #pragma mark - SNImagePickerDelegate
 
-- (void) assetPicker: (FOAssetPicker*) assetPicker didFinishPickingWithAssets: (NSArray*) info {
-    [self.resultLabel setText: [NSString stringWithFormat: @"%d assets selected.", [info count]]];
+- (void) assetPicker: (FOAssetPicker*) assetPicker didFinishPickingWithAssets: (NSArray*) assets {
+    [self.resultLabel setText: [NSString stringWithFormat: @"%lu assets selected.", (unsigned long)[assets count]]];
     if (self.pickerPresentedModally) {
         [assetPicker dismissViewControllerAnimated: YES completion: ^{
              NSLog(@"dismissed modally done");

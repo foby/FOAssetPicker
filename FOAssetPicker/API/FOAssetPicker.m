@@ -20,8 +20,8 @@ NSUInteger const FOAssetPickerDefaultMaxSelectionCount = 30;
 @interface FOAssetPicker ()
 @property (nonatomic, strong) NSArray* assetGroups;
 @property (nonatomic, strong) FOAssetCollectionViewController* videosVC;
-@property (nonatomic) int assetsGroupIndex;
-@property (nonatomic) int numberOfGroups;
+@property (nonatomic) NSUInteger assetsGroupIndex;
+@property (nonatomic) NSUInteger numberOfGroups;
 @property (nonatomic, strong) FOAssetsManager* assetsManager;
 @property (nonatomic, assign, readwrite) enum FOAssetPickerType pickerType;
 @end
@@ -120,7 +120,7 @@ NSUInteger const FOAssetPickerDefaultMaxSelectionCount = 30;
     }
     ALAssetsGroup* group = (ALAssetsGroup*)[self.assetGroups objectAtIndex: indexPath.row];
     NSInteger groupCount = [group numberOfAssets];
-    cell.textLabel.text = [NSString stringWithFormat: @"%@ (%d)", [group valueForProperty: ALAssetsGroupPropertyName], groupCount];
+    cell.textLabel.text = [NSString stringWithFormat: @"%@ (%ld)", [group valueForProperty: ALAssetsGroupPropertyName], (long)groupCount];
     [cell.imageView setImage: [UIImage imageWithCGImage: [(ALAssetsGroup*)[self.assetGroups objectAtIndex: indexPath.row] posterImage]]];
     [cell setAccessoryType: UITableViewCellAccessoryDisclosureIndicator];
 
