@@ -52,6 +52,10 @@ extern NS_ENUM(NSUInteger, FOAssetPickerType) {
  * The maximum number of selectable assets.
  */
 @property (nonatomic, assign) NSUInteger maxSelectionCount;
+/*
+ * Flag for configuring video inline playback (on long-press). Default is NO.
+ */
+@property (nonatomic, assign) BOOL videoPlaybackEnabled;
 @property (nonatomic, assign, readonly) enum FOAssetPickerType pickerType;
 @property (nonatomic, weak) id<FOAssetPickerDelegate> pickerDelegate;
 @property (nonatomic, weak) id<FOAssetPickerCellRenderer> cellRenderer;
