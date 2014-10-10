@@ -43,6 +43,7 @@ NSUInteger const FOAssetPickerDefaultMaxSelectionCount = 30;
     if (self) {
         self.library = [[ALAssetsLibrary alloc] init];
         self.maxSelectionCount = FOAssetPickerDefaultMaxSelectionCount;
+        self.videoPlaybackEnabled = NO;
         self.pickerType = FOAssetPickerTypePhotos;
     }
     return self;
@@ -145,6 +146,7 @@ NSUInteger const FOAssetPickerDefaultMaxSelectionCount = 30;
         FOAssetCollectionViewController* assetsVC = [segue destinationViewController];
         assetsVC.assetsGroup = [self.assetGroups objectAtIndex: self.assetsGroupIndex];
         assetsVC.maxSelectionCount = self.maxSelectionCount;
+        assetsVC.videoPlaybackEnabled = self.videoPlaybackEnabled;
         assetsVC.assetsManager = self.assetsManager;
         assetsVC.selectionDoneHandler = ^(NSArray* assetProxies) {
             if ([self.pickerDelegate respondsToSelector: @selector(assetPicker:didFinishPickingWithAssets:)]) {

@@ -31,9 +31,12 @@ static NSString* const SNAssetsCellIdentifier = @"Cell";
     self.collectionView.delegate = (id)self;
     self.collectionView.dataSource = (id)self;
     self.collectionView.contentInset = UIEdgeInsetsMake(0, 0, 100, 0);
-    UILongPressGestureRecognizer* longPressGesture = [[UILongPressGestureRecognizer alloc]initWithTarget: self action: @selector(handleLongPressGesture:)];
-    [self.collectionView addGestureRecognizer: longPressGesture];
-    longPressGesture.delegate = (id)self;
+
+    if (self.videoPlaybackEnabled) {
+        UILongPressGestureRecognizer* longPressGesture = [[UILongPressGestureRecognizer alloc]initWithTarget: self action: @selector(handleLongPressGesture:)];
+        [self.collectionView addGestureRecognizer: longPressGesture];
+        longPressGesture.delegate = (id)self;
+    }
 }
 
 - (void) viewWillAppear: (BOOL) animated {
