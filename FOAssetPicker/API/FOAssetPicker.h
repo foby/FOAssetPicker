@@ -11,11 +11,8 @@
 // Default maximum selection count (30)
 extern NSUInteger const FOAssetPickerDefaultMaxSelectionCount;
 
-// The type of assets to show
-extern NS_ENUM(NSUInteger, FOAssetPickerType) {
-    FOAssetPickerTypePhotos,
-    FOAssetPickerTypeVideos
-};
+extern NSString* const FOAssetPickerMediaTypePhoto;
+extern NSString* const FOAssetPickerMediaTypeVideo;
 
 @class ALAssetsLibrary;
 @class FOAssetPicker;
@@ -56,18 +53,16 @@ extern NS_ENUM(NSUInteger, FOAssetPickerType) {
  * Flag for configuring video inline playback (on long-press). Default is NO.
  */
 @property (nonatomic, assign) BOOL videoPlaybackEnabled;
-@property (nonatomic, assign, readonly) enum FOAssetPickerType pickerType;
+/*
+ * Array of supported media types (FOAssetPickerMediaTypePhoto, FOAssetPickerMediaTypeVideo).
+ */
+@property (nonatomic, strong) NSArray* supportedMediaTypes;
 @property (nonatomic, weak) id<FOAssetPickerDelegate> pickerDelegate;
 @property (nonatomic, weak) id<FOAssetPickerCellRenderer> cellRenderer;
 
 /*
- * Creates a new instance of the asset picker for the given picker type.
- */
-- (instancetype) initWithPickerType: (enum FOAssetPickerType) type;
-
-/*
  * Convenience method presenting the asset picker modally wrapped in navigation view controller and returns it for configuration purposes.
  */
-+ (FOAssetPicker*) presentModallyWithPickerType: (enum FOAssetPickerType) type andParentViewController: (UIViewController*) parentViewController;
++ (FOAssetPicker*) presentModallyWithMediaTypes: (NSArray*) mediaTypes andParentViewController: (UIViewController*) parentViewController;
 
 @end

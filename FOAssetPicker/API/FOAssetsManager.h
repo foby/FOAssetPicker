@@ -15,7 +15,7 @@
 @interface FOAssetsManager : NSObject
 
 @property (nonatomic, strong, readonly) ALAssetsLibrary* library;
-@property (nonatomic, assign) enum FOAssetPickerType pickerType;
+@property (nonatomic, strong) NSArray* supportedMediaTypes;
 @property (nonatomic, strong) NSCache* previewCache;
 
 - (instancetype) initWithAssetsLibrary: (ALAssetsLibrary*) assetsLibrary;

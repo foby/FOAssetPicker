@@ -15,6 +15,9 @@
 static NSString* const FOAssetPickerAssetsSegue = @"AssetsSegue";
 static NSString* const FOAssetPickerCellIdentifier = @"Cell";
 
+NSString* const FOAssetPickerMediaTypePhoto = @"photo";
+NSString* const FOAssetPickerMediaTypeVideo = @"video";
+
 NSUInteger const FOAssetPickerDefaultMaxSelectionCount = 30;
 
 @interface FOAssetPicker ()
@@ -23,18 +26,9 @@ NSUInteger const FOAssetPickerDefaultMaxSelectionCount = 30;
 @property (nonatomic) NSUInteger assetsGroupIndex;
 @property (nonatomic) NSUInteger numberOfGroups;
 @property (nonatomic, strong) FOAssetsManager* assetsManager;
-@property (nonatomic, assign, readwrite) enum FOAssetPickerType pickerType;
 @end
 
 @implementation FOAssetPicker
-
-- (instancetype) initWithPickerType: (enum FOAssetPickerType) type {
-    self = [self init];
-    if (self) {
-        self.pickerType = type;
-    }
-    return self;
-}
 
 - (instancetype) init {
     UIStoryboard* storyboard = [UIStoryboard storyboardWithName: @"FOAssetPicker" bundle: nil];
@@ -44,13 +38,14 @@ NSUInteger const FOAssetPickerDefaultMaxSelectionCount = 30;
         self.library = [[ALAssetsLibrary alloc] init];
         self.maxSelectionCount = FOAssetPickerDefaultMaxSelectionCount;
         self.videoPlaybackEnabled = NO;
-        self.pickerType = FOAssetPickerTypePhotos;
+        self.supportedMediaTypes = @[FOAssetPickerMediaTypePhoto];
     }
     return self;
 }
 
-+ (FOAssetPicker*) presentModallyWithPickerType: (enum FOAssetPickerType) type andParentViewController: (UIViewController*) parentViewController {
-    FOAssetPicker* assetPicker = [[[self class] alloc] initWithPickerType: type];
++ (FOAssetPicker*) presentModallyWithMediaTypes: (NSArray*) mediaTypes andParentViewController: (UIViewController*) parentViewController {
+    FOAssetPicker* assetPicker = [[[self class] alloc] init];
+    assetPicker.supportedMediaTypes = mediaTypes;
 
     assetPicker.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle: NSLocalizedString(@"FOAssetPicker.cancel", nil) style: UIBarButtonItemStylePlain target: assetPicker action: @selector(dismissImagePicker)];
     UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController: assetPicker];
@@ -61,16 +56,16 @@ NSUInteger const FOAssetPickerDefaultMaxSelectionCount = 30;
 
 - (void) setLibrary: (ALAssetsLibrary*) library {
     self.assetsManager = [[FOAssetsManager alloc] initWithAssetsLibrary: library];
-    self.assetsManager.pickerType = self.pickerType;
+    self.assetsManager.supportedMediaTypes = self.supportedMediaTypes;
 }
 
 - (ALAssetsLibrary*) library {
     return self.assetsManager.library;
 }
 
-- (void) setPickerType: (enum FOAssetPickerType) pickerType {
-    self.assetsManager.pickerType = pickerType;
-    _pickerType = pickerType;
+- (void) setSupportedMediaTypes:(NSArray *)supportedMediaTypes {
+    self.assetsManager.supportedMediaTypes = supportedMediaTypes;
+    _supportedMediaTypes = supportedMediaTypes;
 }
 
 #pragma - mark View lifecycle
