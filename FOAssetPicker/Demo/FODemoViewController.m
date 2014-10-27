@@ -14,7 +14,8 @@
 @property (assign, nonatomic) BOOL pickerPresentedModally;
 @property (weak, nonatomic) IBOutlet UIButton* buttonAssetTypePhotos;
 @property (weak, nonatomic) IBOutlet UIButton* buttonAssetTypeVideos;
-@property (assign, nonatomic) enum FOAssetPickerType pickerType;
+@property (weak, nonatomic) IBOutlet UIButton* buttonAssetTypeBoth;
+@property (strong, nonatomic) NSArray* supportedMediaTypes;
 @end
 
 @implementation FODemoViewController
@@ -33,7 +34,7 @@
 }
 
 - (IBAction) presentAssetPickerModally: (id) sender {
-    FOAssetPicker* assetPicker = [FOAssetPicker presentModallyWithPickerType: self.pickerType andParentViewController: self];
+    FOAssetPicker* assetPicker = [FOAssetPicker presentModallyWithMediaTypes:self.supportedMediaTypes andParentViewController:self];
 
     assetPicker.maxSelectionCount = 10;
     assetPicker.pickerDelegate = self;
@@ -41,14 +42,23 @@
 }
 
 - (IBAction) photosTapped: (id) sender {
-    self.pickerType = FOAssetPickerTypePhotos;
+    self.supportedMediaTypes = @[FOAssetPickerMediaTypePhoto];
     self.buttonAssetTypePhotos.titleLabel.attributedText = [[NSAttributedString alloc] initWithString: @"Photos"];
     self.buttonAssetTypeVideos.titleLabel.attributedText = [self strikedThroughString: @"Videos"];
+    self.buttonAssetTypeBoth.titleLabel.attributedText = [self strikedThroughString: @"both"];
 }
 
 - (IBAction) videosTapped: (id) sender {
-    self.pickerType = FOAssetPickerTypeVideos;
+    self.supportedMediaTypes = @[FOAssetPickerMediaTypeVideo];
     self.buttonAssetTypeVideos.titleLabel.attributedText = [[NSAttributedString alloc] initWithString: @"Videos"];
+    self.buttonAssetTypePhotos.titleLabel.attributedText = [self strikedThroughString: @"Photos"];
+    self.buttonAssetTypeBoth.titleLabel.attributedText = [self strikedThroughString: @"both"];
+}
+
+- (IBAction) bothTapped: (id) sender {
+    self.supportedMediaTypes = @[FOAssetPickerMediaTypePhoto, FOAssetPickerMediaTypeVideo];
+    self.buttonAssetTypeBoth.titleLabel.attributedText = [[NSAttributedString alloc] initWithString: @"both"];
+    self.buttonAssetTypeVideos.titleLabel.attributedText = [self strikedThroughString: @"Videos"];
     self.buttonAssetTypePhotos.titleLabel.attributedText = [self strikedThroughString: @"Photos"];
 }
 
@@ -60,8 +70,9 @@
 }
 
 - (FOAssetPicker*) assetPicker {
-    FOAssetPicker* assetPicker = [[FOAssetPicker alloc] initWithPickerType: self.pickerType];
+    FOAssetPicker* assetPicker = [[FOAssetPicker alloc] init];
 
+    assetPicker.supportedMediaTypes = self.supportedMediaTypes;
     assetPicker.maxSelectionCount = 10;
     assetPicker.pickerDelegate = self;
     return assetPicker;

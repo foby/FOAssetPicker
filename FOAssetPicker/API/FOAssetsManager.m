@@ -19,7 +19,7 @@
     self = [super init];
     if (self) {
         _library = assetsLibrary;
-        _pickerType = FOAssetPickerTypePhotos;
+        _supportedMediaTypes = @[FOAssetPickerMediaTypePhoto];
         _previewCache = [[NSCache alloc] init];
     }
     return self;
@@ -35,7 +35,7 @@
             completionHandler(assetGroups);
             return;
         }
-        [group setAssetsFilter: [self filterForPickerType: self.pickerType]];
+        [group setAssetsFilter: [self filterForMediaTypes: self.supportedMediaTypes]];
         if ([group numberOfAssets] != 0) {
             [assetGroups addObject: group];
         }
@@ -60,11 +60,15 @@
      }];
 }
 
-- (ALAssetsFilter*) filterForPickerType: (enum FOAssetPickerType) pickerType {
-    if (pickerType == FOAssetPickerTypePhotos) {
+- (ALAssetsFilter*) filterForMediaTypes: (NSArray*) pickerTypes {
+    if ([pickerTypes containsObject:FOAssetPickerMediaTypePhoto] &&
+        [pickerTypes containsObject:FOAssetPickerMediaTypeVideo]) {
+        return [ALAssetsFilter allAssets];
+    }
+    if ([pickerTypes containsObject:FOAssetPickerMediaTypePhoto]) {
         return [ALAssetsFilter allPhotos];
     }
-    else if (pickerType == FOAssetPickerTypeVideos) {
+    else if ([pickerTypes containsObject:FOAssetPickerMediaTypeVideo]) {
         return [ALAssetsFilter allVideos];
     }
     return [ALAssetsFilter allAssets];
