@@ -25,9 +25,8 @@
     return self;
 }
 
-- (UIImage*) preview {
+- (UIImage*) loadPreview {
     UIImage* image = nil;
-
     if (self.previewCache) {
         NSURL* assetUrl = [self assetURL];
         image = [self.previewCache objectForKey: assetUrl];
@@ -36,6 +35,12 @@
             [self.previewCache setObject: image forKey: assetUrl];
         }
     }
+    return image;
+}
+
+- (UIImage*) preview {
+    UIImage* image = [self loadPreview];
+
     if (!image) {
         image = [UIImage imageWithCGImage: [self.asset aspectRatioThumbnail]];
     }

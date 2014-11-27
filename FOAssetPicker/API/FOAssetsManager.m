@@ -7,6 +7,7 @@
 //
 
 #import "FOAssetsManager.h"
+#import "FOAssetProxy.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 
 @interface FOAssetsManager ()
@@ -56,7 +57,10 @@
              completionHandler(assets);
              return;
          }
-         [assets addObject: result];
+        FOAssetProxy* assetProxy = [[FOAssetProxy alloc] initWithAsset:result];
+        assetProxy.previewCache = self.previewCache;
+        [assetProxy loadPreview];
+        [assets addObject:assetProxy];
      }];
 }
 
