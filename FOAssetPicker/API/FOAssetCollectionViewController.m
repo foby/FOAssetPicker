@@ -13,7 +13,7 @@
 #import "FOAssetProxy.h"
 #import "FOAssetCell.h"
 
-static NSString* const SNAssetsCellIdentifier = @"Cell";
+static NSString* const FOAssetsCellIdentifier = @"Cell";
 
 @interface FOAssetCollectionViewController ()
 @property (strong, nonatomic) NSArray* assetProxies;
@@ -51,15 +51,14 @@ static NSString* const SNAssetsCellIdentifier = @"Cell";
     self.navigationItem.rightBarButtonItem.enabled = NO;
 
     [self.assetsManager loadAssetsForGroup: self.assetsGroup withCompletionHandler: ^(NSArray* assets) {
-         NSMutableArray* tmp = [NSMutableArray array];
-         for (ALAsset * asset in assets) {
-             FOAssetProxy* proxy = [[FOAssetProxy alloc] initWithAsset: asset];
-             [tmp addObject: proxy];
-         }
-         self.assetProxies = tmp;
+         self.assetProxies = assets;
          [self.collectionView reloadData];
          [self updateTitle];
          self.activityIndicator.hidden = YES;
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:[self.assetProxies count] - 1 inSection:0] atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
+        });
      }];
 }
 
@@ -103,11 +102,10 @@ static NSString* const SNAssetsCellIdentifier = @"Cell";
 }
 
 - (UICollectionViewCell*) collectionView: (UICollectionView*) collectionView cellForItemAtIndexPath: (NSIndexPath*) indexPath {
-    FOAssetCell* cell = (FOAssetCell*)[collectionView dequeueReusableCellWithReuseIdentifier: SNAssetsCellIdentifier forIndexPath: indexPath];
+    FOAssetCell* cell = (FOAssetCell*)[collectionView dequeueReusableCellWithReuseIdentifier: FOAssetsCellIdentifier forIndexPath: indexPath];
     FOAssetProxy* proxy = [self.assetProxies objectAtIndex: indexPath.row];
 
     if (proxy) {
-        proxy.previewCache = self.assetsManager.previewCache;
         cell.assetProxy = proxy;
     }
     return cell;

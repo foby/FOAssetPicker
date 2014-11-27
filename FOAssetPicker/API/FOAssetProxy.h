@@ -24,6 +24,10 @@ typedef NS_ENUM (NSUInteger, SNAssetType) {
 - (instancetype) initWithAsset: (ALAsset*) asset;
 
 /*
+ * Loads and caches the preview of the resource represented by this asset proxy.
+ */
+- (UIImage*) loadPreview;
+/*
  * Creates a preview of the asset.
  */
 - (UIImage*) preview;
