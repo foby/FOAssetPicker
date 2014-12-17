@@ -22,6 +22,6 @@
 
 - (void) loadAssetGroupsWithCompletionHandler: (void (^)(NSArray* assetGroups)) completionHandler failureHandler: (void (^)(NSError* error)) failureHandler;
 
-- (void) loadAssetsForGroup: (ALAssetsGroup*) group withCompletionHandler: (void (^)(NSArray* assets)) completionHandler;
+- (void) loadAssetsForGroup: (ALAssetsGroup*) group withCompletionHandler: (void (^)(NSArray* assets)) completionHandler andProgressHandler:(void (^)(CGFloat progress)) progressHandler;
 
 @end

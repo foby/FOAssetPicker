@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mEn-JT-C5z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mEn-JT-C5z">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
         <!--Asset Collection View Controller-->
@@ -16,15 +17,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Dk0-EZ-unp">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1NO-S7-Ev2">
+                                <rect key="frame" x="0.0" y="50" width="320" height="2"/>
+                            </progressView>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Dk0-EZ-unp">
+                                <rect key="frame" x="0.0" y="52" width="320" height="516"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="4" minimumInteritemSpacing="0.0" id="e6G-Ws-K6r">
                                     <size key="itemSize" width="75" height="75"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="4" minY="4" maxX="4" maxY="4"/>
+                                    <inset key="sectionInset" minX="4" minY="0.0" maxX="4" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="Cell" id="hbj-6A-IiJ" customClass="FOAssetCell">
@@ -36,19 +39,15 @@
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Jf-Dh-PX2">
                                                     <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="KcW-uc-XXJ">
                                                             <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                         </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jbf-iy-Ruv" userLabel="View - Video Info Overlay">
                                                             <rect key="frame" x="0.0" y="55" width="75" height="20"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fo_video.png" translatesAutoresizingMaskIntoConstraints="NO" id="ES6-gq-WVy">
                                                                     <rect key="frame" x="4" y="4" width="14" height="14"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="14" id="7Ff-cc-42v"/>
                                                                         <constraint firstAttribute="height" constant="14" id="Mpl-9K-pE8"/>
@@ -56,7 +55,6 @@
                                                                 </imageView>
                                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y7k-g3-wgU" userLabel="Label - Duration">
                                                                     <rect key="frame" x="28" y="3" width="45" height="15"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="45" id="qSS-yM-jI6"/>
                                                                     </constraints>
@@ -77,12 +75,10 @@
                                                         </view>
                                                         <view opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ct0-dj-iwf" userLabel="Overlay View">
                                                             <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                         </view>
                                                         <imageView userInteractionEnabled="NO" contentMode="bottomRight" image="fo_check.png" translatesAutoresizingMaskIntoConstraints="NO" id="vZH-sI-SKA">
                                                             <rect key="frame" x="42" y="43" width="32" height="32"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="32" id="2UE-40-N8a"/>
@@ -127,23 +123,23 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="KIq-WM-xYF">
-                                <rect key="frame" x="0.0" y="-46" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="KIq-WM-xYF" firstAttribute="leading" secondItem="eT9-gI-j7R" secondAttribute="leading" id="8pm-vw-b1k"/>
-                            <constraint firstAttribute="trailing" secondItem="KIq-WM-xYF" secondAttribute="trailing" id="PxJ-d1-w97"/>
-                            <constraint firstItem="KIq-WM-xYF" firstAttribute="top" secondItem="dLl-O5-7vc" secondAttribute="bottom" constant="-66" id="t9X-rv-euC"/>
-                            <constraint firstItem="Y1g-Cb-lCr" firstAttribute="top" secondItem="KIq-WM-xYF" secondAttribute="bottom" constant="46" id="wJK-dU-B21"/>
+                            <constraint firstItem="Dk0-EZ-unp" firstAttribute="leading" secondItem="eT9-gI-j7R" secondAttribute="leading" id="5Et-9a-Pia"/>
+                            <constraint firstAttribute="trailing" secondItem="Dk0-EZ-unp" secondAttribute="trailing" id="66m-ZU-Lmh"/>
+                            <constraint firstItem="Y1g-Cb-lCr" firstAttribute="top" secondItem="Dk0-EZ-unp" secondAttribute="bottom" priority="250" id="C0k-gR-Pe8"/>
+                            <constraint firstItem="Dk0-EZ-unp" firstAttribute="leading" secondItem="1NO-S7-Ev2" secondAttribute="leading" id="DdY-Ao-6Nz"/>
+                            <constraint firstItem="Dk0-EZ-unp" firstAttribute="trailing" secondItem="1NO-S7-Ev2" secondAttribute="trailing" id="U0I-UW-q49"/>
+                            <constraint firstItem="1NO-S7-Ev2" firstAttribute="top" secondItem="eT9-gI-j7R" secondAttribute="top" constant="50" id="npV-M3-2lg"/>
+                            <constraint firstItem="Dk0-EZ-unp" firstAttribute="top" secondItem="1NO-S7-Ev2" secondAttribute="bottom" id="rSq-AK-UWb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qzK-OV-KDV"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="KIq-WM-xYF" id="ELf-3g-sPT"/>
-                        <outlet property="collectionView" destination="Dk0-EZ-unp" id="Zot-DS-YBh"/>
+                        <outlet property="collectionView" destination="Dk0-EZ-unp" id="yUr-gh-niL"/>
+                        <outlet property="progressView" destination="1NO-S7-Ev2" id="lEf-zT-iEU"/>
+                        <outlet property="progressViewTopLayoutConstraint" destination="npV-M3-2lg" id="pIJ-hs-gHP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zzj-sI-x8Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -159,7 +155,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="IwT-kY-Zj9" style="IBUITableViewCellStyleDefault" id="nAa-Vd-iBe">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="IwT-kY-Zj9" style="IBUITableViewCellStyleDefault" id="nAa-Vd-iBe">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nAa-Vd-iBe" id="idv-sL-XX3">
@@ -184,7 +180,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="k2K-d4-BfW"/>
                     <connections>
-                        <segue destination="Gtz-6p-ca0" kind="push" identifier="AssetsSegue" id="EoQ-oM-buG"/>
+                        <segue destination="Gtz-6p-ca0" kind="push" identifier="AssetsSegue" id="77n-Vp-QhY"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NtZ-IA-RJl" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -49,19 +49,25 @@
                               failureBlock: assetGroupEnumberatorFailure];
 }
 
-- (void) loadAssetsForGroup: (ALAssetsGroup*) group withCompletionHandler: (void (^)(NSArray*)) completionHandler {
+- (void) loadAssetsForGroup: (ALAssetsGroup*) group withCompletionHandler: (void (^)(NSArray*)) completionHandler andProgressHandler:(void (^)(CGFloat progress)) progressHandler {
     __strong NSMutableArray* assets = [NSMutableArray array];
-
-    [group enumerateAssetsUsingBlock: ^(ALAsset* result, NSUInteger index, BOOL* stop) {
-         if (!result) {
-             completionHandler(assets);
-             return;
-         }
-        FOAssetProxy* assetProxy = [[FOAssetProxy alloc] initWithAsset:result];
-        assetProxy.previewCache = self.previewCache;
-        [assetProxy loadPreview];
-        [assets addObject:assetProxy];
-     }];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        [group enumerateAssetsUsingBlock: ^(ALAsset* result, NSUInteger index, BOOL* stop) {
+            if (!result) {
+                progressHandler(1);
+                completionHandler(assets);
+                return;
+            }
+            CGFloat percentDone = 100.0f / ((CGFloat)[group numberOfAssets]) * index;
+            progressHandler(percentDone * 0.01);
+            
+            FOAssetProxy* assetProxy = [[FOAssetProxy alloc] initWithAsset:result];
+            assetProxy.previewCache = self.previewCache;
+            [assetProxy loadPreview];
+            [assets addObject:assetProxy];
+        }];
+    });
 }
 
 - (ALAssetsFilter*) filterForMediaTypes: (NSArray*) pickerTypes {
