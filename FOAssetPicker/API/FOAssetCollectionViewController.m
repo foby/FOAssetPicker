@@ -19,7 +19,8 @@ static NSString* const FOAssetsCellIdentifier = @"Cell";
 @property (strong, nonatomic) NSArray* assetProxies;
 @property (nonatomic) BOOL isPlayerPlaying;
 @property (strong, nonatomic) MPMoviePlayerViewController* playerVC;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView* activityIndicator;
+@property (weak, nonatomic) IBOutlet UIProgressView* progressView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *progressViewTopLayoutConstraint;
 @property (weak, nonatomic) IBOutlet UICollectionView* collectionView;
 @end
 
@@ -30,7 +31,6 @@ static NSString* const FOAssetsCellIdentifier = @"Cell";
     self.assetProxies = [NSMutableArray array];
     self.collectionView.delegate = (id)self;
     self.collectionView.dataSource = (id)self;
-    self.collectionView.contentInset = UIEdgeInsetsMake(0, 0, 100, 0);
 
     if (self.videoPlaybackEnabled) {
         UILongPressGestureRecognizer* longPressGesture = [[UILongPressGestureRecognizer alloc]initWithTarget: self action: @selector(handleLongPressGesture:)];
@@ -40,25 +40,39 @@ static NSString* const FOAssetsCellIdentifier = @"Cell";
 }
 
 - (void) viewWillAppear: (BOOL) animated {
-    self.activityIndicator.hidden = NO;
+    [self.progressView setProgress:0];
+    self.progressView.hidden = NO;
+    
+    // calculate inset due to navigation + status bar visibility
+    CGFloat liveTopInset = self.navigationController.navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height;
+    self.progressViewTopLayoutConstraint.constant = liveTopInset;
+    [self.collectionView setContentInset:UIEdgeInsetsMake(3, 0, 3, 0)];
 }
 
 - (void) viewDidAppear: (BOOL) animated {
     [super viewDidAppear: animated];
 
+    NSLog(@"self.collectionView.frame.size=%@", NSStringFromCGSize(self.collectionView.frame.size));
+    NSLog(@"self.collectionView.frame.orgin=%@", NSStringFromCGPoint(self.collectionView.frame.origin));
+    
     UIBarButtonItem* doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemDone target: self action: @selector(doneTouched)];
     self.navigationItem.rightBarButtonItem = doneBtn;
     self.navigationItem.rightBarButtonItem.enabled = NO;
 
     [self.assetsManager loadAssetsForGroup: self.assetsGroup withCompletionHandler: ^(NSArray* assets) {
          self.assetProxies = assets;
-         [self.collectionView reloadData];
-         [self updateTitle];
-         self.activityIndicator.hidden = YES;
-        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.collectionView reloadData];
+            [self updateTitle];
+            self.progressView.hidden = YES;
+        });
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:[self.assetProxies count] - 1 inSection:0] atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
         });
+     } andProgressHandler:^(CGFloat progress) {
+         dispatch_async(dispatch_get_main_queue(), ^{
+             [self.progressView setProgress:progress];
+         });
      }];
 }
 
