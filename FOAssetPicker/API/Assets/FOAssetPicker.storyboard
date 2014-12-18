@@ -14,17 +14,17 @@
                         <viewControllerLayoutGuide type="bottom" id="Y1g-Cb-lCr"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eT9-gI-j7R">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1NO-S7-Ev2">
-                                <rect key="frame" x="0.0" y="50" width="320" height="2"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="2"/>
                             </progressView>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Dk0-EZ-unp">
-                                <rect key="frame" x="0.0" y="52" width="320" height="516"/>
+                                <rect key="frame" x="0.0" y="52" width="375" height="615"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="4" minimumInteritemSpacing="0.0" id="e6G-Ws-K6r">
-                                    <size key="itemSize" width="75" height="75"/>
+                                    <size key="itemSize" width="85" height="85"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="4" minY="0.0" maxX="4" maxY="0.0"/>
@@ -34,17 +34,17 @@
                                         <rect key="frame" x="4" y="4" width="75" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Jf-Dh-PX2">
-                                                    <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="KcW-uc-XXJ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
                                                         </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jbf-iy-Ruv" userLabel="View - Video Info Overlay">
-                                                            <rect key="frame" x="0.0" y="55" width="75" height="20"/>
+                                                            <rect key="frame" x="0.0" y="65" width="85" height="20"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fo_video.png" translatesAutoresizingMaskIntoConstraints="NO" id="ES6-gq-WVy">
                                                                     <rect key="frame" x="4" y="4" width="14" height="14"/>
@@ -54,7 +54,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y7k-g3-wgU" userLabel="Label - Duration">
-                                                                    <rect key="frame" x="28" y="3" width="45" height="15"/>
+                                                                    <rect key="frame" x="38" y="3" width="45" height="15"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="45" id="qSS-yM-jI6"/>
                                                                     </constraints>
@@ -74,11 +74,11 @@
                                                             </constraints>
                                                         </view>
                                                         <view opaque="NO" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ct0-dj-iwf" userLabel="Overlay View">
-                                                            <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="85" height="85"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                         </view>
                                                         <imageView userInteractionEnabled="NO" contentMode="bottomRight" image="fo_check.png" translatesAutoresizingMaskIntoConstraints="NO" id="vZH-sI-SKA">
-                                                            <rect key="frame" x="42" y="43" width="32" height="32"/>
+                                                            <rect key="frame" x="52" y="53" width="32" height="32"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="32" id="2UE-40-N8a"/>
@@ -136,6 +136,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qzK-OV-KDV"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="collectionView" destination="Dk0-EZ-unp" id="yUr-gh-niL"/>
                         <outlet property="progressView" destination="1NO-S7-Ev2" id="lEf-zT-iEU"/>
@@ -144,7 +145,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zzj-sI-x8Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="948" y="614"/>
+            <point key="canvasLocation" x="947.5" y="613.5"/>
         </scene>
         <!--Asset Picker-->
         <scene sceneID="ns0-0v-OS9">

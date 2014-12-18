@@ -14,8 +14,13 @@
 #import "FOAssetCell.h"
 
 static NSString* const FOAssetsCellIdentifier = @"Cell";
+static CGFloat const IPhone6ScreenWidth = 375;
+static CGFloat const IPhone6PlusScreenWidth = 414;
+static CGFloat const IPhone6CellSize = 89;
+static CGFloat const IPhone6PlusCellSize = 78;
+static CGFloat const IPhone5CellSize = 75;
 
-@interface FOAssetCollectionViewController ()
+@interface FOAssetCollectionViewController () <UICollectionViewDelegateFlowLayout>
 @property (strong, nonatomic) NSArray* assetProxies;
 @property (nonatomic) BOOL isPlayerPlaying;
 @property (strong, nonatomic) MPMoviePlayerViewController* playerVC;
@@ -31,7 +36,8 @@ static NSString* const FOAssetsCellIdentifier = @"Cell";
     self.assetProxies = [NSMutableArray array];
     self.collectionView.delegate = (id)self;
     self.collectionView.dataSource = (id)self;
-
+    self.collectionView.collectionViewLayout = [[UICollectionViewFlowLayout alloc] init];
+    
     if (self.videoPlaybackEnabled) {
         UILongPressGestureRecognizer* longPressGesture = [[UILongPressGestureRecognizer alloc]initWithTarget: self action: @selector(handleLongPressGesture:)];
         [self.collectionView addGestureRecognizer: longPressGesture];
@@ -51,9 +57,6 @@ static NSString* const FOAssetsCellIdentifier = @"Cell";
 
 - (void) viewDidAppear: (BOOL) animated {
     [super viewDidAppear: animated];
-
-    NSLog(@"self.collectionView.frame.size=%@", NSStringFromCGSize(self.collectionView.frame.size));
-    NSLog(@"self.collectionView.frame.orgin=%@", NSStringFromCGPoint(self.collectionView.frame.origin));
     
     UIBarButtonItem* doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemDone target: self action: @selector(doneTouched)];
     self.navigationItem.rightBarButtonItem = doneBtn;
@@ -139,6 +142,32 @@ static NSString* const FOAssetsCellIdentifier = @"Cell";
         cell.checked = assetProxy.selected;
         [self updateTitle];
     }
+}
+
+#pragma mark - UICollectionViewDelegateFlowLayout
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    CGSize screenSize = [[UIScreen mainScreen] applicationFrame].size;
+    
+    // TODO: generic cell size calculation based on the available width
+    if (screenSize.width == IPhone6ScreenWidth) {
+        return CGSizeMake(IPhone6CellSize, IPhone6CellSize);
+    } else if (screenSize.width == IPhone6PlusScreenWidth) {
+        return CGSizeMake(IPhone6PlusCellSize, IPhone6PlusCellSize);
+    }
+    return CGSizeMake(IPhone5CellSize, IPhone5CellSize);
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    return UIEdgeInsetsMake(0, 4, 0, 4);
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    return 2;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    return 4;
 }
 
 #pragma mark - Play Movie
