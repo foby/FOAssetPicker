@@ -32,7 +32,9 @@
         image = [self.previewCache objectForKey: assetUrl];
         if (!image) {
             image = [UIImage imageWithCGImage: [self.asset aspectRatioThumbnail]];
-            [self.previewCache setObject: image forKey: assetUrl];
+            if(image) {
+                [self.previewCache setObject: image forKey: assetUrl];
+            }
         }
     }
     return image;
